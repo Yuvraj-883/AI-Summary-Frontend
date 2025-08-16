@@ -32,8 +32,16 @@ export default function SummarizeArticle() {
           ? { title, description, content }
           : { sTitle: title, sDescription: description, sContent: content };
 
+      // const res = await fetch(
+      //   `https://56e19b63ad71.ngrok-free.app/api/articles/summarize/${language}`,
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({ article: articlePayload }),
+      //   }
+      // );
       const res = await fetch(
-        `https://56e19b63ad71.ngrok-free.app/api/articles/summarize/${language}`,
+        `https://ai-service-backend.vercel.app/api/articles/summarize/${language}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
