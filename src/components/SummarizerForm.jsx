@@ -64,7 +64,7 @@ export default function SummarizerForm({ formData, loading, handleChange, handle
 
           <button type="submit" className="submit-btn" disabled={loading}>
             {loading && <div className="spinner"></div>}
-            {loading ? "Synthesizing..." : "⚡ Generate Summary"}
+            {loading ? "Summarizing..." : "⚡ Generate Summary"}
           </button>
         </div>
       </form>

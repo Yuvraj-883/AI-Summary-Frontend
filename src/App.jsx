@@ -29,28 +29,55 @@ export default function App() {
     setResponse(null);
 
     try {
-      const articlePayload =
+      const articleData =
         language === "en"
           ? { title, description, content }
           : { sTitle: title, sDescription: description, sContent: content };
+
+      const requestBody = { article: articleData };
+      console.log('Request payload:', JSON.stringify(requestBody, null, 2));
+      console.log('Request URL:', `https://ai-service-backend.vercel.app/api/articles/summarize/${language}`);
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000);
 
       const res = await fetch(
         `https://ai-service-backend.vercel.app/api/articles/summarize/${language}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ articles: [articlePayload] }),
+          body: JSON.stringify(requestBody),
+          signal: controller.signal,
         }
       );
+
+      clearTimeout(timeoutId);
+      
+      console.log('Response status:', res.status);
+      console.log('Response headers:', res.headers);
+      
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error('Error response:', errorText);
+        throw new Error(`API Error (${res.status}): ${errorText}`);
+      }
 
       const data = await res.json().catch(() => {
         throw new Error("Invalid JSON response from API.");
       });
-
-      if (!res.ok) throw new Error(data?.message || "Something went wrong with the API.");
       setResponse(data);
     } catch (error) {
-      setResponse({ error: error.message });
+      console.error('Full error details:', error);
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
+      
+      if (error.name === 'AbortError') {
+        setResponse({ error: "Request timeout. Please try again." });
+      } else if (error.message.includes('EPIPE') || error.message.includes('network')) {
+        setResponse({ error: "Network connection lost. Please check your connection and try again." });
+      } else {
+        setResponse({ error: `Error: ${error.message}` });
+      }
     } finally {
       setLoading(false);
     }

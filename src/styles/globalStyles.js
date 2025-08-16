@@ -7,18 +7,20 @@ export const globalStyles = `
     margin: 0;
     font-family: 'Inter', sans-serif;
     color: #1f2937;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   .ai-page {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     background-image: url('https://media.sciencephoto.com/c0/47/35/60/c0473560-800px-wm.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    overflow: hidden;
+    background-attachment: fixed;
+    overflow-x: hidden;
     position: relative;
+    padding: 40px 20px;
   }
 
 
@@ -33,10 +35,7 @@ export const globalStyles = `
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 2px solid rgba(255, 255, 255, 0.2);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
     z-index: 10;
   }
 
@@ -113,9 +112,24 @@ export const globalStyles = `
     border-radius: 8px;
     background: #f9fafb;
     max-height: 400px; overflow-y: auto;
-    white-space: pre-wrap; word-break: break-word;
-    font-family: monospace; font-size: 0.9rem;
+    overflow-x: hidden;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
     color: #1f2937;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 1.6;
+  }
+
+  .response-box pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
   }
 
   .response-box-error {
