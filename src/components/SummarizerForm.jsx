@@ -3,7 +3,7 @@ import React from 'react';
 export default function SummarizerForm({ formData, loading, handleChange, handleSubmit, response }) {
   return (
     <div className="glass-container">
-      <h2 className="form-title">📰 AI News Synthesizer 🤖</h2>
+      <h2 className="form-title">Quick Article Summary</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-grid">
           <div className="form-group">

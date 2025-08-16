@@ -43,9 +43,9 @@ export const globalStyles = `
   .form-title {
     text-align: center;
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 2.6rem;
     font-weight: 700;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Dancing Script', 'Lucida Handwriting', cursive;
     background: linear-gradient(90deg, #00c6ff, #0072ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

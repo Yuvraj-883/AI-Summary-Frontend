@@ -58,7 +58,7 @@ export default function App() {
 
   return (
     <>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Dancing+Script:wght@700&display=swap" />
       <style>{globalStyles}</style>
       <div className="ai-page">
         <SummarizerForm 
